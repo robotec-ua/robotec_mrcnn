@@ -1,0 +1,18 @@
+<!--
+    Placeholder
+-->
+<launch>
+  <!--
+    <node name="agrotec_detection" pkg="agrotec_weed_detection" type="mrcnn.py" output="screen">
+        <remap from="~input" to="/raspicam_node/image" />
+        <param name="~visualization" value="true" />
+	      <param name="~model_path" value="/home/those-eyes/datasets/weeds/coco_weeds.h5" />
+        <param name="~classes" value="BG, crop, weed" />
+    </node>
+
+    <node name="bag" pkg="rosbag" type="play"
+        args="-l $(find mask_rcnn_ros)/bags/rgbd_dataset_freiburg3_long_office_household.bag" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mask_rcnn_ros)/rviz/mask_rcnn_ros.rviz" />
+-->
+</launch>
