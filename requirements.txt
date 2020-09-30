@@ -1,7 +1,7 @@
 h5py
-keras==2.0.0
+keras==2.1.0
 numpy
-opencv-python==3.4.0.12
+opencv-python==3.4.11.39
 scikit-image
 scikit-learn
 scipy

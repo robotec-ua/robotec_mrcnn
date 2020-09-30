@@ -1,27 +1,28 @@
-# The ROS Package of Mask R-CNN for Object Detection and Segmentation
+# The ROS Package of Mask R-CNN for Weeds Detection and Segmentation
+This is a ROS package of [Mask R-CNN](https://arxiv.org/abs/1703.06870) algorithm for object detection and segmentation. It can run object detection on different keras weights (*.h5) using simplicy of ROS to make the package part of a bigger system.
 
-This is a ROS package of [Mask R-CNN](https://arxiv.org/abs/1703.06870) algorithm for object detection and segmentation.
+The purpose of this package is to provide an CNN ROS package for detection of weeds (useful for high-end agricultural robots and )
 
-The package contains ROS node of Mask R-CNN with topic-based ROS interface.
-
-Most of core algorithm code was based on [Mask R-CNN implementation by Matterport, Inc. ](https://github.com/matterport/Mask_RCNN)
+## Credits
+* Original project by Matterport Inc. : [Mask_RCNN](https://github.com/matterport/Mask_RCNN)
+* Original ROS package by qixuxiang : [mask_rcnn_ros](https://github.com/qixuxiang/mask_rcnn_ros)
 
 ## Training
 
-This repository doesn't contain code for training Mask R-CNN network model.
-If you want to train the model on your own class definition or dataset, try it on [the upstream reposity](https://github.com/matterport/Mask_RCNN) and give the result weight to `model_path` parameter.
+In progress
 
 
 ## Requirements
-* ROS Indigo/kinetic
-* TensorFlow 1.3+
-* Keras 2.0.8+
+* ROS Melodic (Python 3 version) and higher
+* TensorFlow 1.13+
+* Keras 2.1.5+
 * Numpy, skimage, scipy, Pillow, cython, h5py
-* I only test code on Python 2.7, it may work on Python3.X.
-* see more dependency and version details in [requirements.txt](https://github.com/qixuxiang/mask_rcnn_ros/blob/master/requirements.txt)
+* Python 3.6+
+* see more dependencies and version details in [requirements.txt](https://github.com/qixuxiang/mask_rcnn_ros/blob/master/requirements.txt)
 
 ## ROS Interfaces
- 
+This part describes various ROS-related interfaces such as parameters and topics.
+
 ### Parameters
 
 * `~model_path: string`
@@ -39,7 +40,7 @@ If you want to train the model on your own class definition or dataset, try it o
 * `~class_names: string[]`
 
     Class names to be treated as detection targets.
-    Default: All MS COCO classes.
+    Default: `['BG']`.
 
 ### Topics Published
 
@@ -58,46 +59,52 @@ If you want to train the model on your own class definition or dataset, try it o
 
     Input image to be proccessed
 
+## Project structure
+In progress
+
 ## Getting Started
+0. If you are using Ubuntu, you should consider installing some of the required dependencies through apt
+```
+$ sudo apt-get install python3-matplotlib python3-opencv python3-scipy pythin3-sklearn python3-skimage python3-ipython python3-numpy python3-h5py
+```
 
 1. Clone this repository to your catkin workspace, build workspace and source devel environment 
 ```
 $ cd ~/.catkin_ws/src
-$ git clone https://github.com/qixuxiang/mask_rcnn_ros.git
-$ cd mask_rcnn_ros
-$ python2 -m pip install --upgrade pip
-$ python2 -m pip install -r requirements.txt
+$ git clone https://github.com/robotec-ua/agrotec_weed_detection.git
+$ cd agrotec_weed_detection
+$ python3 -m pip install --upgrade pip
+$ python3 -m pip install -r requirements.txt
 $ cd ../..
 $ catkin_make
 $ source devel/setup.bash
 
 ```
+2. Set up your environment
+        To do this, you should prepare your ROS package for camera and write the proper topics' names and parameters in the detection launchfile. For example, you should change `~class_names` and `~model_path` to use your own weights, and `~input` to the name of the topic where you are going to publish the messages.
 
-2. Run mask_rcnn node
+3. Run mask_rcnn node
       ~~~bash
-      $ rosrun mask_rcnn_ros mask_rcnn_node
+      $ roslaunch agrotec_weed_detection detection.launch
       ~~~
 
-## Example
+## Example of use
+For this time, we are going to implement weed detection, so we need to collect the weights for the detection
 
-There is a simple example launch file using [RGB-D SLAM Dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset/download).
-
+Assuming that you are already in the project directory :
 ~~~bash
-$ sudo chmod 777 scripts/download_freiburg3_rgbd_example_bag.sh
-$ ./scripts/download_freiburg3_rgbd_example_bag.sh
-$ roslaunch mask_rcnn_ros freiburg3_rgbd_example.launch
+$ mkdir weights
+$ cd weights
 ~~~
 
-Then RViz window will appear and show result like following:
+And download the [file](https://drive.google.com/file/d/11XssW0dkMGfxsFWM-zp_DxICXsLqnGtf/view?usp=sharing) inside the folder. 
 
-![example1](doc/mask_r-cnn_1.png)
+Make sure that you've already changed the `~input` topic in `launch/detection.launch`. Then the last step is to start the detection:
+~~~bash
+$ roslaunch agrotec_weed_detection detection.launch
+~~~
 
-![example2](doc/mask_r-cnn_2.png)
-
-## Other issue
-
-* If you have installed Anaconda|Python, Please delete or comment `export PATH=/home/soft/conda3/bin:$PATH` in you `~/.bashrc` file.
-
-* When you run the code, please wait for a moment for the result because there will be delay when play bag file and process the images.
-
-* Welcome to submit any issue if you have problems, and add your software system information details, such as Ubuntu 16/14,ROS Indigo/Kinetic, Python2/Python3, Tensorflow 1.4,etc..
+If you want to visualize the detection, you should open a new tab/window in your terminal and run :
+~~~bash
+$ 
+~~~
