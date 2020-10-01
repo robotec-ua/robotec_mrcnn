@@ -23,12 +23,12 @@ import keras.layers as KL
 import keras.engine as KE
 import keras.models as KM
 
-import utils
+from . import utils
 
 # Requires TensorFlow 1.3+ and Keras 2.0.8+.
 from distutils.version import LooseVersion
 assert LooseVersion(tf.__version__) >= LooseVersion("1.3")
-#assert LooseVersion(keras.__version__) >= LooseVersion('2.0.8')
+assert LooseVersion(keras.__version__) >= LooseVersion('2.0.8')
 
 
 ############################################################
