@@ -9,7 +9,7 @@ import rospy
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import RegionOfInterest
 
-#
+# Local Mask_RCNN files
 import agrotec_weed_detection.config as config
 import agrotec_weed_detection.model as modellib
 import agrotec_weed_detection.visualize as visualize
@@ -83,7 +83,7 @@ class Node(object):
 
                 # Visualize results
                 if self._visualization:
-                    cv_result = self._visualize_cv(result, np_image)
+                    cv_result = self._visualize(result, np_image)
                     image_msg = cv_bridge.cv2_to_imgmsg(cv_result, 'bgr8')
                     self._visual_pub.publish(image_msg)
 
@@ -132,7 +132,7 @@ class Node(object):
         visualize.display_instances(image, result['rois'], result['masks'],
                                     result['class_ids'], self._class_names,
                                     result['scores'], ax = axes,
-                                    class_colors = self._class_colors)
+                                    colors = self._class_colors)
         fig.tight_layout()
         canvas.draw()
         result = np.fromstring(canvas.tostring_rgb(), dtype='uint8')
@@ -141,14 +141,6 @@ class Node(object):
         result = result.reshape((int(h), int(w), 3))
 
         return result
-
-    def _visualize_cv(self, result, image):
-        image = visualize.display_instances_cv(image, result['rois'], result['masks'],
-                                               result['class_ids'], self._class_names,
-                                               result['scores'],
-                                               class_colors=self._class_colors)
-
-        return image
 
     def _image_callback(self, msg):
         rospy.logdebug("Get an image")
