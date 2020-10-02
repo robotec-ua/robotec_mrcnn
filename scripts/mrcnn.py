@@ -23,6 +23,7 @@ class Configuration(config.Config):
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
     DETECTION_MIN_CONFIDENCE = 0.9
+    IMAGE_MIN_DIM = 512
     
     def __init__(self, num_classes):
         self.NUM_CLASSES = num_classes
