@@ -23,6 +23,10 @@ class Configuration(config.Config):
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
     DETECTION_MIN_CONFIDENCE = 0.9
+    
+    def __init__(self, num_classes):
+        self.NUM_CLASSES = num_classes
+        super().__init__()
 
 class Node(object):
     def __init__(self):
@@ -35,8 +39,7 @@ class Node(object):
         self._class_names = class_names.split(", ")
 
         # Create configuration instance
-        config = Configuration()
-        config.NUM_CLASSES = len(self._class_names)
+        config = Configuration(len(self._class_names))
         config.display()
 
         # Create model object in inference mode.
