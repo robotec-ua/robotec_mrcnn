@@ -118,7 +118,7 @@ class Node(object):
             mask.encoding = "mono8"
             mask.is_bigendian = False
             mask.step = mask.width
-            mask.data = (result['masks'][:, :, i] * 255).tobytes()
+            # mask.data = (result['masks'][:, :, i] * 255).tobytes()
             result_msg.masks.append(mask)
 
         return result_msg
