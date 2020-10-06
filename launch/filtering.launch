@@ -1,0 +1,5 @@
+<launch>
+    <node name="agrotec_weed_filtering" pkg="agrotec_weed_detection" type="filter.py" output="screen">
+        <remap from="~input" to="/raspicam_node/image" />
+    </node>
+</launch>

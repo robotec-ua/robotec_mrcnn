@@ -1,0 +1,3 @@
+weights/
+*.pyc
+**/__pycache__
