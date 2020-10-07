@@ -92,36 +92,36 @@ This part describes various ROS-related interfaces such as parameters and topics
 ```
 
 ### Folders
-*  ./bags  - folder for data, recorded by Rosbag package
-*  ./doc  - folder contains some documentation an examples of work
-*  ./msg  - default folder for ROS messages
-*  ./rviz  - files for vizualization through RViz
-*  ./scripts  - main folder of the project (contains executables)
-*  ./src/agrotec_weed_detection  - local Mask RCNN implementation
+*  `./bags`  - folder for data, recorded by Rosbag package
+*  `./doc`  - folder contains some documentation an examples of work
+*  `./msg`  - default folder for ROS messages
+*  `./rviz`  - files for vizualization through RViz
+*  `./scripts`  - main folder of the project (contains executables)
+*  `./src/agrotec_weed_detection`  - local Mask RCNN implementation
 
 ### Files
 The project uses following files
 
 #### Launch
-*  detection.launch  - launching the main functionality
-*  filtering.launch  - filtering the input
-*  train.launch  -  launching training code
+*  `detection.launch`  - launching the main functionality
+*  `filtering.launch`  - filtering the input
+*  `train.launch`  -  launching training code
 
 #### Messages
-*  Result.msg  - message type for delivering detection results 
+*  `Result.msg`  - message type for delivering detection results 
 
 #### RVIz
-*  mask_rcnn_ros.rviz  - RViz visualization configuration
+*  `mask_rcnn_ros.rviz`  - RViz visualization configuration
 
 #### Package
-*  filter.py  - image filtering node (performance tweak)
-*  mrcnn.py  - main NN-based detection implementation
-*  train.py  - node for training
+*  `filter.py`  - image filtering node (performance tweak)
+*  `mrcnn.py`  - main NN-based detection implementation
+*  `train.py`  - node for training
 
 #### ROS
-*  CMakeLists.txt  - package building instructions
-*  package.xml  - data about the package
-*  setup.py  - rospy instructions
+*  `CMakeLists.txt`  - package building instructions
+*  `package.xml`  - data about the package
+*  `setup.py`  - rospy instructions
 
 
 ## Getting Started
