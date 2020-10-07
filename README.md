@@ -8,14 +8,12 @@ The purpose of this package is to provide an CNN ROS package for detection of we
 * Original ROS package by qixuxiang : [mask_rcnn_ros](https://github.com/qixuxiang/mask_rcnn_ros)
 
 ## Training
-
 In progress
-
 
 ## Requirements
 * ROS Melodic (Python 3 version) and higher
-* TensorFlow 1.13+
-* Keras 2.1.5+
+* TensorFlow 1.3+
+* Keras 2.0.8+
 * Numpy, skimage, scipy, Pillow, cython, h5py
 * Python 3.6+
 * see more dependencies and version details in [requirements.txt](https://github.com/qixuxiang/mask_rcnn_ros/blob/master/requirements.txt)
@@ -60,7 +58,71 @@ This part describes various ROS-related interfaces such as parameters and topics
     Input image to be proccessed
 
 ## Project structure
-In progress
+```
+.
+├── bags
+├── doc
+├── launch
+│   ├── detection.launch
+│   ├── filtering.launch
+│   └── train.launch
+├── msg
+│   └── Result.msg
+├── rviz
+│   └── mask_rcnn_ros.rviz
+├── scripts
+│   ├── filter.py
+│   ├── __init__.py
+│   ├── mrcnn.py
+│   └── train.py
+├── src
+│   └── agrotec_weed_detection
+│       ├── config.py
+│       ├── __init__.py
+│       ├── model.py
+│       ├── parallel_model.py
+│       ├── utils.py
+│       └── visualize.py
+├── CMakeLists.txt
+├── LICENSE
+├── package.xml
+├── README.md
+├── requirements.txt
+└── setup.py
+```
+
+### Folders
+*  ./bags  - folder for data, recorded by Rosbag package
+*  ./doc  - folder contains some documentation an examples of work
+*  ./msg  - default folder for ROS messages
+*  ./rviz  - files for vizualization through RViz
+*  ./scripts  - main folder of the project (contains executables)
+*  ./src/agrotec_weed_detection  - local Mask RCNN implementation
+
+### Files
+The project uses following files
+
+#### Launch
+*  detection.launch  - launching the main functionality
+*  filtering.launch  - filtering the input
+*  train.launch  -  launching training code
+
+#### Messages
+*  Result.msg  - message type for delivering detection results 
+
+#### RVIz
+*  mask_rcnn_ros.rviz  - RViz visualization configuration
+
+#### Package
+*  filter.py  - image filtering node (performance tweak)
+*  mrcnn.py  - main NN-based detection implementation
+*  train.py  - node for training
+
+#### ROS
+*  CMakeLists.txt  - package building instructions
+*  package.xml  - data about the package
+*  setup.py  - rospy instructions
+
 
 ## Getting Started
 0. If you are using Ubuntu, you should consider installing some of the required dependencies through apt
