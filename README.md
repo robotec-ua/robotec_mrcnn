@@ -44,7 +44,7 @@ This part describes various ROS-related interfaces such as parameters and topics
 
 ### Topics Published
 
-* `~result: mask_rcnn_ros/Result`
+* `~result: agrotec_weed_detection/Result`
 
     Result of detection. See also `Result.msg` for detailed description.
 
@@ -81,7 +81,7 @@ $ source devel/setup.bash
 
 ```
 2. Set up your environment
-        To do this, you should prepare your ROS package for camera and write the proper topics' names and parameters in the detection launchfile. For example, you should change `~class_names` and `~model_path` to use your own weights, and `~input` to the name of the topic where you are going to publish the messages.
+        To do this, you should prepare your ROS package for camera and write the proper topics' names and parameters in the detection launchfile. For example, you should change `~class_names` and `~model_path` to use your own weights, and `~input` to the name of the topic where you are going to publish the messages in the detection.launch and also you should change input/output topics inside of filtering.lauch.
 
 3. Run mask_rcnn node
       ~~~bash
@@ -89,6 +89,9 @@ $ source devel/setup.bash
       ~~~
 
 ## Example of use
+This part is dedicated for showing how to use the package.
+
+### Example of detection
 For this time, we are going to implement weed detection, so we need to collect the weights for the detection
 
 Assuming that you are already in the project directory :
@@ -107,4 +110,12 @@ $ roslaunch agrotec_weed_detection detection.launch
 If you want to visualize the detection, you should open a new tab/window in your terminal and run :
 ~~~bash
 $ 
+~~~
+
+### Example of filtering
+That's not good to try detecting objects on pictures that aren't containing any desired objects. For optimization purposes, there should be a filter. This filter would try to detect some objects based on colors of the desired object and send the image further if there any object you would like it to be.
+
+To use filtering only (for debugging purposes) you can run
+~~~bash
+$ roslaunch agrotec_weed_detection filtering.launch
 ~~~
