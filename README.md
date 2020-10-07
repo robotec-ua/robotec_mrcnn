@@ -109,7 +109,7 @@ $ roslaunch agrotec_weed_detection detection.launch
 
 If you want to visualize the detection, you should open a new tab/window in your terminal and run :
 ~~~bash
-$ 
+$ rosrun image_view image_view image:=<your topic>
 ~~~
 
 ### Example of filtering
