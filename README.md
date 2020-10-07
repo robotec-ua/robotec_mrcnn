@@ -7,9 +7,6 @@ The purpose of this package is to provide an CNN ROS package for detection of we
 * Original project by Matterport Inc. : [Mask_RCNN](https://github.com/matterport/Mask_RCNN)
 * Original ROS package by qixuxiang : [mask_rcnn_ros](https://github.com/qixuxiang/mask_rcnn_ros)
 
-## Training
-In progress
-
 ## Requirements
 * ROS Melodic (Python 3 version) and higher
 * TensorFlow 1.3+
@@ -181,3 +178,6 @@ To use filtering only (for debugging purposes) you can run
 ~~~bash
 $ roslaunch agrotec_weed_detection filtering.launch
 ~~~
+
+### Example of training
+In progress...
