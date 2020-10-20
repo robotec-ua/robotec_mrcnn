@@ -10,10 +10,10 @@ from sensor_msgs.msg import Image
 from sensor_msgs.msg import RegionOfInterest
 
 # Local Mask_RCNN files
-import agrotec_weed_detection.config as config
-import agrotec_weed_detection.model as modellib
-import agrotec_weed_detection.visualize as visualize
-from agrotec_weed_detection.msg import Result
+import agrotec_mrcnn.config as config
+import agrotec_mrcnn.model as modellib
+import agrotec_mrcnn.visualize as visualize
+from agrotec_mrcnn.msg import Result
 
 class Configuration(config.Config):
     # give the configuration a recognizable name
@@ -35,9 +35,7 @@ class Node(object):
         self._publish_rate = rospy.get_param('~publish_rate', 100)
         self._visualization = rospy.get_param('~visualization', True)
         model_path = rospy.get_param('~model_path', './')
-        class_names = rospy.get_param('~class_names', 'BG')
-
-        self._class_names = class_names.split(", ")
+        self._class_names = rospy.get_param('~class_names', ['BG'])
 
         # Create configuration instance
         config = Configuration(len(self._class_names))

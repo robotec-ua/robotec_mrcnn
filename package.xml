@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>agrotec_weed_detection</name>
+  <name>agrotec_mrcnn</name>
   <version>1.0.0</version>
-  <description>The ROS-powered Mask R-CNN implementation for weed detection.</description>
+  <description>The ROS-powered Mask R-CNN implementation.</description>
 
   <maintainer email="akio.code@gmail.com">Akio Ochiai</maintainer>
   <maintainer email="illya.shvarov@gmail.com">Illia Shvarov</maintainer>

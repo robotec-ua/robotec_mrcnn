@@ -3,7 +3,7 @@
         <remap from="~input" to="/raspicam_node/image" />
         <param name="~visualization" value="true" />
 	    <param name="~model_path" value="$(find agrotec_weed_detection)/weights/mask_rcnn_weed_0040.h5" />
-        <param name="~class_names" value="BG, weed, crop" />
+        <rosparam param name="~class_names">['BG', 'weed', 'crop']</rosparam>
     </node>
 
 <!--
@@ -12,4 +12,5 @@
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mask_rcnn_ros)/rviz/mask_rcnn_ros.rviz" />
 -->
+
 </launch>
