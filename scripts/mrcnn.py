@@ -35,7 +35,7 @@ class Node(object):
         self._publish_rate = rospy.get_param('~publish_rate', 100)
         self._visualization = rospy.get_param('~visualization', True)
         model_path = rospy.get_param('~model_path', './')
-        self._class_names = rospy.get_param('~class_names', ['BG'])
+        self._class_names = rospy.get_param('/roslaunch/class_names', ['BG'])
 
         # Create configuration instance
         config = Configuration(len(self._class_names))
@@ -148,7 +148,7 @@ class Node(object):
             self._msg_lock.release()
 
 def main():
-    rospy.init_node('agrotec_detection')
+    rospy.init_node('agrotec_mrcnn')
 
     node = Node()
     node.run()

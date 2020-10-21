@@ -1,9 +1,9 @@
 <launch>
-    <node name="agrotec_detection" pkg="agrotec_weed_detection" type="mrcnn.py" output="screen">
+    <node name="agrotec_mrcnn" pkg="agrotec_mrcnn" type="mrcnn.py" output="screen">
         <remap from="~input" to="/raspicam_node/image" />
         <param name="~visualization" value="true" />
-	    <param name="~model_path" value="$(find agrotec_weed_detection)/weights/mask_rcnn_weed_0040.h5" />
-        <rosparam param name="~class_names">['BG', 'weed', 'crop']</rosparam>
+	    <param name="~model_path" value="$(find agrotec_mrcnn)/weights/mask_rcnn_weed_0040.h5" />
+        <rosparam param="~class_names">["BG", "weed", "crop"]</rosparam>
     </node>
 
 <!--
