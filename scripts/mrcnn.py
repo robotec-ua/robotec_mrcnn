@@ -10,10 +10,10 @@ from sensor_msgs.msg import Image
 from sensor_msgs.msg import RegionOfInterest
 
 # Local Mask_RCNN files
-import agrotec_mrcnn.config as config
-import agrotec_mrcnn.model as modellib
-import agrotec_mrcnn.visualize as visualize
-from agrotec_mrcnn.msg import Result
+import robotec_mrcnn.config as config
+import robotec_mrcnn.model as modellib
+import robotec_mrcnn.visualize as visualize
+from robotec_mrcnn.msg import Result
 
 class Configuration(config.Config):
     # give the configuration a recognizable name

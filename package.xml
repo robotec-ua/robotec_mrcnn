@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>agrotec_mrcnn</name>
+  <name>robotec_mrcnn</name>
   <version>1.0.0</version>
   <description>The ROS-powered Mask R-CNN implementation.</description>
 
